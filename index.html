@@ -7,152 +7,120 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* === THEME VŨ TRỤ DEEP SPACE v2 === */
+        /* === THEME VŨ TRỤ DEEP SPACE v3 === */
         :root {
-            --bg-color: #050609; /* Đen vũ trụ đậm */
-            --glass-bg: rgba(16, 22, 31, 0.6); /* Kính mờ xanh đen */
+            --bg-color: #050609;
+            --glass-bg: rgba(16, 22, 31, 0.6);
             --glass-border: rgba(102, 252, 241, 0.15);
-            --primary-color: #66fcf1; /* Xanh lơ Neon */
-            --secondary-color: #45a29e; /* Xanh ngọc */
+            --primary-color: #66fcf1;
+            --secondary-color: #45a29e;
             --text-main: #ffffff;
             --text-muted: #c5c6c7;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        
-       body {
-            /* === HÌNH NỀN VŨ TRỤ v3: SÁNG HƠN & TOÀN MÀN HÌNH === */
-            background-color: #0b0c10;
+
+        body {
+            /* 1. NỀN VŨ TRỤ BẰNG CODE: KHÔNG DÙNG ẢNH -> NÉT CĂNG 100% TRỌN ĐỜI */
+            background-color: #050609;
             background-image: 
-                /* 1. Lớp phủ siêu mờ (Trong suốt hơn 2.5 lần so với trước để tăng độ sáng) */
-                linear-gradient(rgba(11, 12, 16, 0.2), rgba(11, 12, 16, 0.3)),
-                /* 2. Link ảnh của bạn (Hãy điền tên file chuẩn có đuôi kép vào đây) */
-                url('bg-vutru.png.jpg');
-                
-            /* 3. Lệnh ép co giãn ra toàn màn hình (Ngăn lặp ảnh) */
-            background-size: cover;          /* Co giãn ảnh vừa khít màn hình */
-            background-repeat: no-repeat;    /* Cấm lặp lại */
-            background-position: center;     /* Căn giữa */
-            background-attachment: fixed;    /* Hiệu ứng 3D khi cuộn */
-            
+                /* Các dải tinh vân Xanh lơ, Tím, Xanh ngọc ảo diệu */
+                radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.35), transparent 45%),
+                radial-gradient(circle at 85% 20%, rgba(6, 182, 212, 0.25), transparent 45%),
+                radial-gradient(circle at 50% 80%, rgba(35, 11, 89, 0.4), transparent 50%),
+                /* Bầu trời sao lấp lánh */
+                radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.8), rgba(0,0,0,0)),
+                radial-gradient(1.5px 1.5px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 130px 80px, rgba(255,255,255,0.7), rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 160px 120px, #ffffff, rgba(0,0,0,0));
+            background-size: 100% 100%, 100% 100%, 100% 100%, 150px 150px, 200px 200px, 250px 250px, 300px 300px, 350px 350px;
+            background-attachment: fixed;
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
-        }
-            
-            /* Lệnh CSS quan trọng để cuộn mượt */
-            scroll-behavior: smooth; 
+            scroll-behavior: smooth;
         }
 
-        /* Thanh điều hướng Kính mờ (Glassmorphism Navbar) */
+        /* 2. SỬA THANH MENU: CĂN GIỮA VÀ THOÁNG HƠN */
         nav {
-            position: fixed; width: 100%; top: 0; z-index: 100;
+            position: fixed; 
+            width: 100vw; /* Ép thanh menu dài 100% màn hình */
+            left: 0; 
+            top: 0; 
+            z-index: 100;
             background: rgba(5, 6, 9, 0.8);
             backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--glass-border);
-            display: flex; justify-content: center; gap: 40px; padding: 20px 0;
+            display: flex; 
+            justify-content: center; /* Kéo chữ ra chính giữa */
+            align-items: center; 
+            gap: 50px; /* Tăng khoảng cách các chữ cho thoáng */
+            padding: 20px 0;
         }
         nav a {
             color: var(--text-main); text-decoration: none; font-weight: 600;
             text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;
-            transition: all 0.3s ease;
-            position: relative;
+            transition: all 0.3s ease; position: relative;
         }
         nav a:hover { color: var(--primary-color); }
 
-        /* === HIỆU ỨNG PHÁT SÁNG KHI MENU ĐANG HOẠT ĐỘNG (ACTIVE) === */
         nav a.active {
             color: var(--primary-color);
             text-shadow: 0 0 15px var(--primary-color), 0 0 5px var(--primary-color);
         }
         nav a.active::after {
-            content: '';
-            position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px;
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px;
             background-color: var(--primary-color);
             box-shadow: 0 0 10px var(--primary-color);
         }
 
-        /* Container chung */
         .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
 
-        /* === HIỆU ỨNG CUỘN (SCROLL REVEAL) === */
         .hidden { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
         .show { opacity: 1; transform: translateY(0); }
 
-        /* === HERO SECTION === */
+        /* 3. SỬA CHỮ TÊN: NHỎ LẠI VÀ CẤM XUỐNG DÒNG */
         .hero { display: flex; align-items: center; justify-content: space-between; min-height: 100vh; }
         .hero-text { flex: 1; }
-        .hero-text h1 { font-size: 3.5rem; margin-bottom: 10px; }
+        .hero-text h1 { 
+            font-size: 2.8rem; /* Thu nhỏ chữ lại một chút */
+            margin-bottom: 10px; 
+            white-space: nowrap; /* Lệnh ma thuật ép chữ luôn nằm trên 1 dòng */
+        }
         .hero-text h1 span { color: var(--primary-color); text-shadow: 0 0 15px rgba(102, 252, 241, 0.5); }
         .hero-text h2 { font-size: 1.5rem; color: var(--secondary-color); margin-bottom: 20px; font-weight: 400; }
         .hero-text p { color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem; max-width: 90%; }
         
-        /* Buttons */
         .btn-group { display: flex; gap: 20px; }
-        .btn {
-            padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 600;
-            transition: all 0.3s; display: inline-block; cursor: pointer;
-        }
-        .btn-primary {
-            background: transparent; color: var(--primary-color);
-            border: 2px solid var(--primary-color);
-            box-shadow: 0 0 10px rgba(102, 252, 241, 0.2);
-        }
-        .btn-primary:hover {
-            background: var(--primary-color); color: var(--bg-color);
-            box-shadow: 0 0 20px var(--primary-color);
-        }
-        .btn-secondary {
-            background: var(--glass-bg); color: var(--text-main); border: 1px solid var(--glass-border);
-        }
+        .btn { padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: all 0.3s; display: inline-block; cursor: pointer; }
+        .btn-primary { background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); box-shadow: 0 0 10px rgba(102, 252, 241, 0.2); }
+        .btn-primary:hover { background: var(--primary-color); color: var(--bg-color); box-shadow: 0 0 20px var(--primary-color); }
+        .btn-secondary { background: var(--glass-bg); color: var(--text-main); border: 1px solid var(--glass-border); }
         .btn-secondary:hover { background: rgba(255,255,255,0.1); }
 
-        /* Ảnh Hero với hiệu ứng trôi nổi và ảnh đại diện thật */
         .hero-image { flex: 1; display: flex; justify-content: flex-end; }
-        .hero-image img {
-            width: 320px; height: 320px; object-fit: cover; border-radius: 50%; /* Chuyển sang ảnh tròn */
-            border: 5px solid white; /* Thêm viền trắng nổi bật */
-            box-shadow: 0 0 30px rgba(102, 252, 241, 0.4);
-            animation: float 6s ease-in-out infinite;
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-            100% { transform: translateY(0px); }
-        }
+        .hero-image img { width: 320px; height: 320px; object-fit: cover; border-radius: 50%; border: 5px solid white; box-shadow: 0 0 30px rgba(102, 252, 241, 0.4); animation: float 6s ease-in-out infinite; }
+        @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
 
-        /* === GLASS CARDS (Dự án & Dịch vụ) === */
-        .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 50px; color: var(--text-main); padding-top: 80px; } /* Đẩy title xuống để không bị Navbar che */
+        .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 50px; color: var(--text-main); padding-top: 80px; }
         .section-title span { color: var(--primary-color); text-shadow: 0 0 10px rgba(102, 252, 241, 0.3); }
         
         .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
         
-        .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px; padding: 30px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .glass-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(102, 252, 241, 0.2);
-            border-color: var(--primary-color);
-        }
+        .glass-card { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; transition: transform 0.3s, box-shadow 0.3s; }
+        .glass-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(102, 252, 241, 0.2); border-color: var(--primary-color); }
         .glass-card h3 { color: var(--primary-color); margin-bottom: 15px; font-size: 1.5rem; }
         .glass-card p { color: var(--text-muted); margin-bottom: 20px; }
         
-        /* Tags (HTML, Python, v.v.) */
         .tags { display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag {
-            background: rgba(69, 162, 158, 0.2); color: var(--secondary-color);
-            padding: 5px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600;
-        }
+        .tag { background: rgba(69, 162, 158, 0.2); color: var(--secondary-color); padding: 5px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600; }
 
-        /* Responsive */
         @media (max-width: 768px) {
             .hero { flex-direction: column; text-align: center; margin-top: 50px; }
             .hero-text { margin-bottom: 50px; }
+            /* Trên điện thoại hẹp, cho phép chữ xuống dòng để không tràn màn hình */
+            .hero-text h1 { font-size: 2rem; white-space: normal; } 
             .hero-image { justify-content: center; }
             .hero-image img { width: 250px; height: 250px; }
             .btn-group { justify-content: center; }
