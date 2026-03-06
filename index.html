@@ -20,18 +20,25 @@
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
         
-        body {
-            /* === HÌNH NỀN VŨ TRỤ MỚI (Xanh đen có hành tinh) === */
-            background-color: var(--bg-color);
-           background-image: 
-                linear-gradient(rgba(5, 6, 9, 0.6), rgba(5, 6, 9, 0.8)),
-                url('bg-vutru.png.jpg'); /* Điền chính xác tên file có đuôi kép này vào *//
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Hiệu ứng 3D khi cuộn */
+       body {
+            /* === HÌNH NỀN VŨ TRỤ v3: SÁNG HƠN & TOÀN MÀN HÌNH === */
+            background-color: #0b0c10;
+            background-image: 
+                /* 1. Lớp phủ siêu mờ (Trong suốt hơn 2.5 lần so với trước để tăng độ sáng) */
+                linear-gradient(rgba(11, 12, 16, 0.2), rgba(11, 12, 16, 0.3)),
+                /* 2. Link ảnh của bạn (Hãy điền tên file chuẩn có đuôi kép vào đây) */
+                url('bg-vutru.png.jpg');
+                
+            /* 3. Lệnh ép co giãn ra toàn màn hình (Ngăn lặp ảnh) */
+            background-size: cover;          /* Co giãn ảnh vừa khít màn hình */
+            background-repeat: no-repeat;    /* Cấm lặp lại */
+            background-position: center;     /* Căn giữa */
+            background-attachment: fixed;    /* Hiệu ứng 3D khi cuộn */
+            
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
+        }
             
             /* Lệnh CSS quan trọng để cuộn mượt */
             scroll-behavior: smooth; 
