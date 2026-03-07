@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nguyễn Khánh Diệp</title>
+    <title>Diep Nguyen - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* === THEME VŨ TRỤ DEEP SPACE v3 === */
+        
         :root {
             --bg-color: #050609;
             --glass-bg: rgba(16, 22, 31, 0.6);
@@ -21,14 +21,12 @@
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
         body {
-            /* 1. NỀN VŨ TRỤ BẰNG CODE: KHÔNG DÙNG ẢNH -> NÉT CĂNG 100% TRỌN ĐỜI */
+            /* Pure CSS Deep Space Background */
             background-color: #050609;
             background-image: 
-                /* Các dải tinh vân Xanh lơ, Tím, Xanh ngọc ảo diệu */
                 radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.35), transparent 45%),
                 radial-gradient(circle at 85% 20%, rgba(6, 182, 212, 0.25), transparent 45%),
                 radial-gradient(circle at 50% 80%, rgba(35, 11, 89, 0.4), transparent 50%),
-                /* Bầu trời sao lấp lánh */
                 radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)),
                 radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.8), rgba(0,0,0,0)),
                 radial-gradient(1.5px 1.5px at 90px 40px, #ffffff, rgba(0,0,0,0)),
@@ -42,21 +40,11 @@
             scroll-behavior: smooth;
         }
 
-        /* 2. SỬA THANH MENU: CĂN GIỮA VÀ THOÁNG HƠN */
         nav {
-            position: fixed; 
-            width: 100vw; /* Ép thanh menu dài 100% màn hình */
-            left: 0; 
-            top: 0; 
-            z-index: 100;
-            background: rgba(5, 6, 9, 0.8);
-            backdrop-filter: blur(15px);
+            position: fixed; width: 100vw; left: 0; top: 0; z-index: 100;
+            background: rgba(5, 6, 9, 0.8); backdrop-filter: blur(15px);
             border-bottom: 1px solid var(--glass-border);
-            display: flex; 
-            justify-content: center; /* Kéo chữ ra chính giữa */
-            align-items: center; 
-            gap: 50px; /* Tăng khoảng cách các chữ cho thoáng */
-            padding: 20px 0;
+            display: flex; justify-content: center; align-items: center; gap: 40px; padding: 20px 0;
         }
         nav a {
             color: var(--text-main); text-decoration: none; font-weight: 600;
@@ -64,63 +52,64 @@
             transition: all 0.3s ease; position: relative;
         }
         nav a:hover { color: var(--primary-color); }
-
-        nav a.active {
-            color: var(--primary-color);
-            text-shadow: 0 0 15px var(--primary-color), 0 0 5px var(--primary-color);
-        }
+        nav a.active { color: var(--primary-color); text-shadow: 0 0 15px var(--primary-color), 0 0 5px var(--primary-color); }
         nav a.active::after {
             content: ''; position: absolute; bottom: -5px; left: 0; width: 100%; height: 2px;
-            background-color: var(--primary-color);
-            box-shadow: 0 0 10px var(--primary-color);
+            background-color: var(--primary-color); box-shadow: 0 0 10px var(--primary-color);
         }
 
-        .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 100px 20px 40px; }
 
         .hidden { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
         .show { opacity: 1; transform: translateY(0); }
 
-        /* 3. SỬA CHỮ TÊN: NHỎ LẠI VÀ CẤM XUỐNG DÒNG */
         .hero { display: flex; align-items: center; justify-content: space-between; min-height: 100vh; }
         .hero-text { flex: 1; }
-        .hero-text h1 { 
-            font-size: 2.8rem; /* Thu nhỏ chữ lại một chút */
-            margin-bottom: 10px; 
-            white-space: nowrap; /* Lệnh ma thuật ép chữ luôn nằm trên 1 dòng */
-        }
+        .hero-text h2 { font-size: 1.5rem; color: var(--secondary-color); margin-bottom: 5px; font-weight: 400; }
+        .hero-text h1 { font-size: 3.5rem; margin-bottom: 10px; white-space: nowrap; }
         .hero-text h1 span { color: var(--primary-color); text-shadow: 0 0 15px rgba(102, 252, 241, 0.5); }
-        .hero-text h2 { font-size: 1.5rem; color: var(--secondary-color); margin-bottom: 20px; font-weight: 400; }
-        .hero-text p { color: var(--text-muted); margin-bottom: 30px; font-size: 1.1rem; max-width: 90%; }
+        .hero-text .subtitle { font-size: 1.3rem; color: var(--text-main); margin-bottom: 20px; font-weight: 600; }
+        .hero-text p { color: var(--text-muted); margin-bottom: 30px; font-size: 1.05rem; max-width: 90%; text-align: justify; }
         
-        .btn-group { display: flex; gap: 20px; }
-        .btn { padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: all 0.3s; display: inline-block; cursor: pointer; }
+        .btn-group { display: flex; gap: 20px; flex-wrap: wrap; }
+        .btn { padding: 12px 30px; border-radius: 30px; text-decoration: none; font-weight: 600; transition: all 0.3s; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; }
         .btn-primary { background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color); box-shadow: 0 0 10px rgba(102, 252, 241, 0.2); }
         .btn-primary:hover { background: var(--primary-color); color: var(--bg-color); box-shadow: 0 0 20px var(--primary-color); }
         .btn-secondary { background: var(--glass-bg); color: var(--text-main); border: 1px solid var(--glass-border); }
         .btn-secondary:hover { background: rgba(255,255,255,0.1); }
 
+        .social-icons { margin-top: 30px; font-size: 1.8rem; display: flex; gap: 20px; }
+        .social-icons a { color: var(--text-muted); transition: 0.3s; }
+        .social-icons a:hover { color: var(--primary-color); transform: translateY(-3px); }
+
         .hero-image { flex: 1; display: flex; justify-content: flex-end; }
         .hero-image img { width: 320px; height: 320px; object-fit: cover; border-radius: 50%; border: 5px solid white; box-shadow: 0 0 30px rgba(102, 252, 241, 0.4); animation: float 6s ease-in-out infinite; }
         @keyframes float { 0% { transform: translateY(0px); } 50% { transform: translateY(-20px); } 100% { transform: translateY(0px); } }
 
-        .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 50px; color: var(--text-main); padding-top: 80px; }
+        .section-title { font-size: 2.5rem; text-align: center; margin-bottom: 50px; color: var(--text-main); padding-top: 60px; }
         .section-title span { color: var(--primary-color); text-shadow: 0 0 10px rgba(102, 252, 241, 0.3); }
         
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        .glass-card { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; transition: transform 0.3s, box-shadow 0.3s; margin-bottom: 30px; }
+        .glass-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(102, 252, 241, 0.15); border-color: var(--primary-color); }
         
-        .glass-card { background: var(--glass-bg); backdrop-filter: blur(10px); border: 1px solid var(--glass-border); border-radius: 20px; padding: 30px; transition: transform 0.3s, box-shadow 0.3s; }
-        .glass-card:hover { transform: translateY(-10px); box-shadow: 0 10px 30px rgba(102, 252, 241, 0.2); border-color: var(--primary-color); }
-        .glass-card h3 { color: var(--primary-color); margin-bottom: 15px; font-size: 1.5rem; }
-        .glass-card p { color: var(--text-muted); margin-bottom: 20px; }
+        .about-text p { font-size: 1.1rem; color: var(--text-muted); margin-bottom: 15px; text-align: justify; line-height: 1.8; }
+        
+        .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .skill-title { color: var(--text-main); margin-bottom: 20px; font-size: 1.3rem; display: flex; align-items: center; gap: 10px; }
+        .project-title { color: var(--primary-color); margin-bottom: 15px; font-size: 1.5rem; }
+        .glass-card p { color: var(--text-muted); margin-bottom: 20px; font-size: 0.95rem; }
         
         .tags { display: flex; flex-wrap: wrap; gap: 10px; }
-        .tag { background: rgba(69, 162, 158, 0.2); color: var(--secondary-color); padding: 5px 12px; border-radius: 15px; font-size: 0.8rem; font-weight: 600; }
+        .tag { background: rgba(69, 162, 158, 0.15); border: 1px solid rgba(102, 252, 241, 0.3); color: var(--text-main); padding: 8px 15px; border-radius: 20px; font-size: 0.85rem; font-weight: 500; }
+        .tag-highlight { color: var(--primary-color); }
 
         @media (max-width: 768px) {
             .hero { flex-direction: column; text-align: center; margin-top: 50px; }
             .hero-text { margin-bottom: 50px; }
-            /* Trên điện thoại hẹp, cho phép chữ xuống dòng để không tràn màn hình */
-            .hero-text h1 { font-size: 2rem; white-space: normal; } 
+            .hero-text h1 { font-size: 2.5rem; white-space: normal; } 
+            .social-icons { justify-content: center; }
             .hero-image { justify-content: center; }
             .hero-image img { width: 250px; height: 250px; }
             .btn-group { justify-content: center; }
@@ -129,71 +118,92 @@
         }
     </style>
 </head>
-
 <body>
 
     <nav>
         <a href="#home" class="nav-link">Home</a>
-        <a href="#about" class="nav-link">About</a>
+        <a href="#about" class="nav-link">About Me</a>
+        <a href="#skills" class="nav-link">Skills</a>
         <a href="#projects" class="nav-link">Projects</a>
         <a href="#contact" class="nav-link">Contact</a>
     </nav>
 
     <div id="home" class="container hero hidden">
         <div class="hero-text">
-            <h2>Xin chào, tôi là</h2>
-            <h1><span>Nguyễn Khánh Diệp</span></h1>
-            <h2>Nhà nghiên cứu Kinh tế & Phân tích Dữ liệu</h2>
-            <p>Tôi đam mê áp dụng kinh tế lượng và các công cụ lập trình (Python, Stata) để giải mã dữ liệu, phân tích vĩ mô và giải quyết các bài toán kinh tế phức tạp.</p>
+            <h2>Hello, I'm</h2>
+            <h1><span>Diep Nguyen</span></h1>
+            <div class="subtitle">Economics Student & Aspiring Data Analyst</div>
+            <p>I am passionate about leveraging statistical tools and programming to decode raw data, analyze economic trends, and solve complex real-world problems.</p>
             <div class="btn-group">
-                <a href="#contact" class="btn btn-primary nav-link">Hợp tác ngay</a>
-                <a href="#" class="btn btn-secondary"><i class="fas fa-download"></i> Tải CV</a>
+                <a href="#contact" class="btn btn-primary nav-link">Let's Collaborate</a>
+                <a href="LINK_FILE_PDF_CUA_BAN_O_DAY" target="_blank" class="btn btn-secondary"><i class="fas fa-download"></i> Download CV</a>
             </div>
-            <div style="margin-top: 30px; font-size: 1.8rem;">
-                <a href="https://github.com/DiepNguyen2711" target="_blank" style="color: var(--text-muted); margin-right: 15px; transition: 0.3s;"><i class="fab fa-github"></i></a>
-                <a href="#" style="color: var(--text-muted); transition: 0.3s;"><i class="fab fa-linkedin"></i></a>
+            <div class="social-icons">
+                <a href="https://github.com/DiepNguyen2711" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                <a href="https://www.linkedin.com/in/di%E1%BB%87p-nguy%E1%BB%85n-2484b0397/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
             </div>
         </div>
         <div class="hero-image">
-            <img src="https://diepnguyen2711.github.io/assets/img/prof_pic.jpg" alt="Diệp Nguyễn">
+            <img src="https://diepnguyen2711.github.io/assets/img/prof_pic.jpg" alt="Diep Nguyen">
         </div>
     </div>
 
     <div id="about" class="container hidden">
-        <h2 class="section-title">Về <span>Tôi</span></h2>
-        <div class="glass-card">
-            <p>Chuyên mục này sẽ là nơi tôi giới thiệu chi tiết về chặng đường học vấn, đam mê nghiên cứu kinh tế lượng tại Đại học Ngoại Thương, cũng như các kỹ năng phân tích dữ liệu chuyên sâu bằng Stata, Python và R...</p>
+        <h2 class="section-title">About <span>Me</span></h2>
+        <div class="glass-card about-text">
+            <p>I am a second-year International Economics student at Foreign Trade University (FTU) with a rock-solid foundation in economic theory. Driven by a deep passion for working with numbers and Data Analysis (DA), I thrive on transforming complex datasets into meaningful, actionable insights.</p>
+            <p>My academic journey is heavily focused on addressing real-world challenges through data-driven economic analysis, international trade, and quantitative research. I am constantly expanding my technical toolkit, striving to seamlessly bridge the gap between theoretical economics and practical data science to create impactful solutions.</p>
         </div>
     </div>
 
-    <div id="projects" class="container hidden">
-        <h2 class="section-title">Dự án <span>Nổi bật</span></h2>
-        <div class="grid">
+    <div id="skills" class="container hidden">
+        <h2 class="section-title">My <span>Skills</span></h2>
+        <div class="grid-2">
             <div class="glass-card">
-                <h3>Nền tảng Hourskill</h3>
-                <p>Đảm nhiệm vai trò Leader. Thiết kế kiến trúc dữ liệu và điều phối dự án phát triển nền tảng kết nối kỹ năng.</p>
+                <div class="skill-title"><i class="fas fa-laptop-code" style="color: var(--primary-color);"></i> Technology Skills</div>
                 <div class="tags">
-                    <span class="tag">Project Management</span>
-                    <span class="tag">Data Analysis</span>
-                </div>
-                <div style="margin-top: 20px;">
-                    <a href="#" class="btn btn-secondary" style="padding: 5px 15px; font-size: 0.8rem;">Xem chi tiết</a>
+                    <span class="tag">Python <span class="tag-highlight">(Basic)</span></span>
+                    <span class="tag">SQL <span class="tag-highlight">(Basic)</span></span>
+                    <span class="tag">Git / GitHub <span class="tag-highlight">(Basic)</span></span>
+                    <span class="tag">Stata <span class="tag-highlight">(Familiar)</span></span>
                 </div>
             </div>
             
             <div class="glass-card">
-                <h3>Tỷ giá & Lạm phát</h3>
-                <p>Nghiên cứu kinh tế vĩ mô về tác động của can thiệp ngoại hối đến mức độ truyền dẫn tỷ giá vào lạm phát tại các nước đang phát triển.</p>
+                <div class="skill-title"><i class="fas fa-toolbox" style="color: var(--primary-color);"></i> Tools & Software</div>
                 <div class="tags">
-                    <span class="tag">Stata</span>
+                    <span class="tag">MS Excel, Word, PowerPoint <span class="tag-highlight">(Advanced)</span></span>
+                    <span class="tag">Canva <span class="tag-highlight">(Intermediate)</span></span>
+                    <span class="tag">Google Workspace <span class="tag-highlight">(Intermediate)</span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="projects" class="container hidden">
+        <h2 class="section-title">Featured <span>Projects</span></h2>
+        <div class="grid-3">
+            <div class="glass-card">
+                <h3 class="project-title">Hourskill Platform</h3>
+                <p>Served as Project Leader. Designed data architecture and coordinated the development of a skill-sharing connectivity platform.</p>
+                <div class="tags">
+                    <span class="tag">Project Management</span>
+                    <span class="tag">Data Analysis</span>
+                </div>
+            </div>
+            
+            <div class="glass-card">
+                <h3 class="project-title">Exchange Rate & Inflation</h3>
+                <p>Conducted macroeconomic research on the impact of foreign exchange intervention on exchange rate pass-through to inflation in developing countries.</p>
+                <div class="tags">
                     <span class="tag">Econometrics</span>
-                    <span class="tag">Macroeconomics</span>
+                    <span class="tag">Stata</span>
                 </div>
             </div>
 
             <div class="glass-card">
-                <h3>Phân tích Khí hậu</h3>
-                <p>Ứng dụng mô hình thống kê để phân tích tác động của biến đổi môi trường (lượng mưa, nhiệt độ) đến chỉ số kinh tế.</p>
+                <h3 class="project-title">Climate Data Analysis</h3>
+                <p>Applied statistical models to analyze the economic impact of environmental variables such as rainfall and average temperature.</p>
                 <div class="tags">
                     <span class="tag">Python</span>
                     <span class="tag">Data Science</span>
@@ -203,17 +213,20 @@
     </div>
 
     <div id="contact" class="container hidden" style="text-align: center; margin-bottom: 50px;">
-        <h2 class="section-title">Liên hệ <span>Với tôi</span></h2>
-        <div class="glass-card" style="max-width: 600px; margin: 0 auto;">
-            <i class="fas fa-envelope" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;"></i>
-            <h3>Bạn có dự án cần phân tích?</h3>
-            <p>Tôi luôn cởi mở với các cơ hội nghiên cứu và phân tích dữ liệu mới.</p>
-            <a href="mailto:diepnguyen@gmail.com" class="btn btn-primary" style="margin-top: 10px;">diepnguyen@gmail.com</a>
+        <h2 class="section-title">Get In <span>Touch</span></h2>
+        <div class="glass-card" style="max-width: 800px; margin: 0 auto;">
+            <i class="fas fa-paper-plane" style="font-size: 3rem; color: var(--primary-color); margin-bottom: 20px;"></i>
+            <h3 style="color: var(--text-main); font-size: 1.8rem; margin-bottom: 10px;">Have a project in mind?</h3>
+            <p style="font-size: 1.1rem;">I am always open to discussing new opportunities in economic research and data analysis.</p>
+            
+            <div class="btn-group" style="justify-content: center; margin-top: 30px;">
+                <a href="mailto:diepnguyen@gmail.com" class="btn btn-primary"><i class="fas fa-envelope"></i> diepnguyen@gmail.com</a>
+                <a href="https://www.facebook.com/diep.nguyenkhanh.92/" target="_blank" class="btn btn-secondary"><i class="fab fa-facebook-f" style="color: #1877F2;"></i> Facebook</a>
+            </div>
         </div>
     </div>
 
     <script>
-        // 1. Hiệu ứng các khối hiện ra mượt mà (Scroll Reveal)
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
@@ -225,34 +238,29 @@
         const hiddenElements = document.querySelectorAll('.hidden');
         hiddenElements.forEach((el) => observer.observe(el));
 
-        // 2. Tính năng phát sáng (Active State) cho menu khi cuộn
-        const sections = document.querySelectorAll('div[id]'); // Lấy các phần có ID
+        const sections = document.querySelectorAll('div[id]'); 
         const navLinks = document.querySelectorAll('nav a.nav-link');
 
         window.addEventListener('scroll', () => {
             let current = '';
-            
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (pageYOffset >= (sectionTop - 150)) { // 150 là khoảng cách offset để tính toán chính xác hơn
+                if (pageYOffset >= (sectionTop - 200)) {
                     current = section.getAttribute('id');
                 }
             });
 
             navLinks.forEach(link => {
-                link.classList.remove('active'); // Xóa class active cũ
+                link.classList.remove('active');
                 if (link.getAttribute('href').includes(current)) {
-                    link.classList.add('active'); // Thêm class active cho mục đang ở đó
+                    link.classList.add('active');
                 }
             });
         });
 
-        // 3. Đảm bảo tính năng cuộn mượt (mặc dù đã có CSS, nhưng thêm JS cho chắc chắn)
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
